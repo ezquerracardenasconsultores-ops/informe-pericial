@@ -1,94 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
+
 <title>Informe Pericial Contable</title>
 
 <style>
 
-@page{
-    size:A4;
-    margin:2.5cm 2cm;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
+
+    background:#d9d9d9;
     font-family:"Times New Roman",serif;
-    margin:0;
-    padding:0;
-    color:#000;
-    background:#fff;
+
 }
 
-.portada{
-    width:100%;
-    height:100vh;
+/*======================
+BARRA SUPERIOR
+=======================*/
+
+.toolbar{
+
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:60px;
+    background:#222;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
+    justify-content:flex-end;
     align-items:center;
-    text-align:center;
+    padding:0 20px;
+    z-index:9999;
+
 }
 
-.encabezado{
-    position:absolute;
-    top:20px;
-    width:100%;
-    text-align:center;
-    font-family:Arial;
-    font-size:11px;
-    letter-spacing:1px;
-}
+.toolbar button{
 
-.titulo1{
-    font-family:Arial;
-    font-size:32px;
-    font-weight:bold;
-    margin-top:120px;
-}
-
-.titulo2{
-    font-family:Arial;
-    font-size:22px;
-    margin-top:15px;
-    font-weight:bold;
-}
-
-.linea{
-    width:120px;
-    height:3px;
     background:#8B0000;
-    margin:25px auto;
-}
-
-.datos{
-    width:70%;
-    margin-top:40px;
-    font-size:18px;
-    line-height:2;
-}
-
-.datos table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.datos td{
-    padding:6px;
-}
-
-.etiqueta{
-    width:180px;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    cursor:pointer;
+    border-radius:5px;
+    font-size:15px;
     font-weight:bold;
+
 }
 
-.pie{
-    position:absolute;
-    bottom:30px;
-    width:100%;
+.toolbar button:hover{
+
+    background:#650000;
+
+}
+
+/*======================
+A4
+=======================*/
+
+.page{
+
+    width:210mm;
+    min-height:297mm;
+
+    margin:90px auto 30px auto;
+
+    background:white;
+
+    padding:25mm;
+
+    position:relative;
+
+    box-shadow:0 0 12px rgba(0,0,0,.15);
+
+    page-break-after:always;
+
+}
+
+/*======================
+ENCABEZADO
+=======================*/
+
+.header{
+
     text-align:center;
+
     font-family:Arial;
-    font-size:12px;
-    color:#555;
+
+    font-size:11px;
+
+    margin-bottom:45px;
+
+}
+
+/*======================
+PORTADA
+=======================*/
+
+.cover-title{
+
+    text-align:center;
+
+    font-family:Arial;
+
+    font-size:24pt;
+
+    font-weight:bold;
+
+    margin-top:80px;
+
+}
+
+.cover-line{
+
+    width:120px;
+
+    height:3px;
+
+    background:#8B0000;
+
+    margin:25px auto;
+
+}
+
+.cover-subtitle{
+
+    text-align:center;
+
+    font-family:Arial;
+
+    font-size:18pt;
+
+    font-weight:bold;
+
+    margin-bottom:50px;
+
+}
+
+.info{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:30px;
+
+}
+
+.info td{
+
+    border:1px solid #000;
+
+    padding:12px;
+
+    font-size:13pt;
+
+}
+
+.info td:first-child{
+
+    width:180px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+}
+
+/*======================
+PIE
+=======================*/
+
+.footer{
+
+    position:absolute;
+
+    bottom:18mm;
+
+    left:25mm;
+
+    right:25mm;
+
+    border-top:2px solid #8B0000;
+
+    padding-top:8px;
+
+    text-align:center;
+
+    font-family:Arial;
+
+    font-size:10pt;
+
+}
+
+/*======================
+IMPRESIÓN
+=======================*/
+
+@media print{
+
+.toolbar{
+
+display:none;
+
+}
+
+body{
+
+background:white;
+
+}
+
+.page{
+
+margin:0;
+
+box-shadow:none;
+
+}
+
 }
 
 </style>
@@ -97,68 +234,93 @@ body{
 
 <body>
 
-<div class="portada">
+<div class="toolbar">
 
-<div class="encabezado">
+<button onclick="window.print()">
+
+🖨 IMPRIMIR INFORME
+
+</button>
+
+</div>
+
+<div class="page">
+
+<div class="header">
 
 CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+
 CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. 55655
 
 </div>
 
-<div class="titulo1">
+<div class="cover-title">
 
 INFORME PERICIAL CONTABLE DE PARTE
 
 </div>
 
-<div class="linea"></div>
+<div class="cover-line"></div>
 
-<div class="titulo2">
+<div class="cover-subtitle">
 
 LIQUIDACIÓN TÉCNICA DE DEUDA DERIVADA DE CONTRATO DE MUTUO
 
 </div>
 
-<div class="datos">
-
-<table>
+<table class="info">
 
 <tr>
-<td class="etiqueta">Acreedor</td>
+
+<td>Acreedor</td>
+
 <td>José Carlos Villena Rozas</td>
+
 </tr>
 
 <tr>
-<td class="etiqueta">Deudor</td>
+
+<td>Deudor</td>
+
 <td>Jim Bryam Álvarez Velásquez</td>
+
 </tr>
 
 <tr>
-<td class="etiqueta">Materia</td>
+
+<td>Materia</td>
+
 <td>Liquidación Técnica de Deuda</td>
+
 </tr>
 
 <tr>
-<td class="etiqueta">Tomo</td>
+
+<td>Tomo</td>
+
 <td>I de I</td>
+
 </tr>
 
 <tr>
-<td class="etiqueta">Folios</td>
+
+<td>Folios</td>
+
 <td>04</td>
+
 </tr>
 
 <tr>
-<td class="etiqueta">Año</td>
+
+<td>Año</td>
+
 <td>2026</td>
+
 </tr>
 
 </table>
 
-</div>
-
-<div class="pie">
+<div class="footer">
 
 CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
 
@@ -167,852 +329,1183 @@ CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
 </div>
 
 </body>
+
 </html>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>Informe Pericial Contable</title>
-
-<style>
-
-@page{
-    size:A4;
-    margin:2.5cm 2cm;
-}
-
-body{
-
-    margin:0;
-    background:#efefef;
-    font-family:"Times New Roman",serif;
-
-}
-
-.page{
-
-    width:210mm;
-    min-height:297mm;
-    margin:20px auto;
-    background:white;
-    padding:25mm 20mm;
-    box-sizing:border-box;
-    page-break-after:always;
-
-}
-
-.encabezado{
-
-    text-align:center;
-    font-family:Arial;
-    font-size:11px;
-    margin-bottom:30px;
-
-}
-
-.titulo{
-
-    text-align:center;
-    font-family:Arial;
-    font-size:24px;
-    font-weight:bold;
-    margin-bottom:35px;
-
-}
-
-table{
-
-    width:100%;
-    border-collapse:collapse;
-    font-family:Arial;
-    font-size:11pt;
-
-}
-
-th{
-
-    border:1px solid black;
-    padding:8px;
-    text-align:center;
-    font-weight:bold;
-
-}
-
-td{
-
-    border:1px solid black;
-    padding:8px;
-    vertical-align:top;
-
-}
-
-.rojo{
-
-    color:#8B0000;
-    font-weight:bold;
-
-}
-
-.negrita{
-
-    font-weight:bold;
-
-}
-
-</style>
-
-</head>
-
-<body>
+<!-- ========================================================= -->
+<!-- PÁGINA 2 - ESTRUCTURA DEL INFORME -->
+<!-- ========================================================= -->
 
 <div class="page">
 
-<div class="encabezado">
+    <div class="header">
 
-CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+        CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+        CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. 55655
 
-CONTADOR PÚBLICO • PERITO CONTABLE • MAT. 55655
+    </div>
+
+    <h1 style="
+        text-align:center;
+        font-family:Arial;
+        font-size:22pt;
+        margin-bottom:35px;
+        font-weight:bold;
+        text-transform:uppercase;
+    ">
+
+        ESTRUCTURA DEL INFORME PERICIAL
+
+    </h1>
+
+    <table style="width:100%;border-collapse:collapse;font-family:Arial;font-size:11pt;">
+
+        <tr style="background:#f2f2f2;">
+
+            <th style="border:2px solid #000;padding:10px;color:#8B0000;width:22%;">
+                CONTENIDO
+            </th>
+
+            <th style="border:2px solid #000;padding:10px;color:#8B0000;">
+                ÍNDICE DEL INFORME
+            </th>
+
+            <th style="border:2px solid #000;padding:10px;color:#8B0000;width:14%;">
+                Art. CPP
+            </th>
+
+        </tr>
+
+        <tr>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                CAPÍTULO I
+            </td>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                ANTECEDENTES
+            </td>
+
+            <td style="border:1px solid #000;"></td>
+
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">1.1 Datos generales del proceso</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">1.2 Origen de la obligación financiera</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                CAPÍTULO II
+            </td>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                OBJETO, ALCANCE Y METODOLOGÍA
+            </td>
+
+            <td style="border:1px solid #000;"></td>
+
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">2.1 Objeto de la pericia</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">2.2 Alcance</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">2.3 Metodología</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                CAPÍTULO III
+            </td>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                EXAMEN
+            </td>
+
+            <td style="border:1px solid #000;"></td>
+
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">3.1 Determinación del capital base</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">3.2 Determinación de intereses convencionales</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">3.3 Conversión monetaria</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">3.4 Pagos efectuados</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">3.5 Determinación del saldo de la obligación</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #000;"></td>
+            <td style="border:1px solid #000;padding:8px;">3.6 Observación técnica</td>
+            <td style="border:1px solid #000;"></td>
+        </tr>
+
+        <tr>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                CAPÍTULO IV
+            </td>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                CONCLUSIONES
+            </td>
+
+            <td style="border:1px solid #000;"></td>
+
+        </tr>
+
+        <tr>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                CAPÍTULO V
+            </td>
+
+            <td style="border:1px solid #000;padding:8px;font-weight:bold;">
+                FECHA, SELLO Y FIRMA
+            </td>
+
+            <td style="border:1px solid #000;"></td>
+
+        </tr>
+
+    </table>
+
+    <div class="footer">
+
+        CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
+
+    </div>
 
 </div>
-
-<div class="titulo">
-
-ESTRUCTURA DEL INFORME PERICIAL
-
-</div>
-
-<table>
-
-<tr>
-
-<th style="width:22%">CONTENIDO</th>
-
-<th>ÍNDICE DEL INFORME</th>
-
-<th style="width:15%">Art. CPP</th>
-
-</tr>
-
-<tr>
-
-<td class="rojo">CAPÍTULO I</td>
-
-<td class="negrita">ANTECEDENTES</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>1.1 Datos generales del proceso</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>1.2 Origen de la obligación financiera</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td class="rojo">CAPÍTULO II</td>
-
-<td class="negrita">OBJETO, ALCANCE Y METODOLOGÍA DEL INFORME</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>2.1 Objeto de la pericia</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>2.2 Alcance</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>2.3 Metodología</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td class="rojo">CAPÍTULO III</td>
-
-<td class="negrita">EXAMEN</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>3.1 Determinación del capital base</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>3.2 Determinación de intereses</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>3.3 Conversión monetaria</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>3.4 Pagos efectuados</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>3.5 Determinación del saldo de la obligación</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td></td>
-
-<td>3.6 Observación técnica</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td class="rojo">CAPÍTULO IV</td>
-
-<td class="negrita">CONCLUSIONES</td>
-
-<td></td>
-
-</tr>
-
-<tr>
-
-<td class="rojo">CAPÍTULO V</td>
-
-<td class="negrita">FECHA, SELLO Y FIRMA</td>
-
-<td></td>
-
-</tr>
-
-</table>
-
-</div>
-
-</body>
-
-</html>
 <!-- ========================================================= -->
 <!-- PÁGINA 3 -->
 <!-- ========================================================= -->
 
 <div class="page">
 
-    <div class="encabezado">
+    <div class="header">
 
         CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
-        CONTADOR PÚBLICO • PERITO CONTABLE • MAT. Nº 55655
+        CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. N.º 55655
 
     </div>
 
-    <h1 class="titulo">
-
+    <h1 style="
+        text-align:center;
+        font-family:Arial;
+        font-size:20pt;
+        font-weight:bold;
+        margin-bottom:35px;
+    ">
         INFORME PERICIAL CONTABLE
-
     </h1>
 
-    <p style="text-align:justify; line-height:1.8;">
+    <p style="
+        text-align:justify;
+        line-height:1.9;
+        font-size:13pt;
+    ">
 
         <strong>JESÚS ÁNGEL CÁRDENAS SIMON</strong>, identificado con DNI N.º
         45060367, Contador Público Colegiado con Matrícula N.º 55655 del
-        Colegio de Contadores Públicos de Lima, Perito Contable, con estudios
-        de Maestría en Dirección y Administración de Empresas con
-        especialización en Finanzas, Maestría en Alta Dirección y Gestión de
-        Empresas y demás especializaciones profesionales; habiendo efectuado el
-        examen técnico de la documentación proporcionada respecto de la
-        obligación materia del presente informe, cumplo con emitir el presente
-        <strong>INFORME PERICIAL CONTABLE DE PARTE</strong>, cuyo contenido se
-        desarrolla en los capítulos siguientes:
+        Colegio de Contadores Públicos de Lima, Perito Contable de Parte,
+        habiendo efectuado el examen técnico de la documentación contractual,
+        bancaria y financiera correspondiente a la obligación materia del
+        presente informe, cumplo con emitir el presente
+        <strong>INFORME PERICIAL CONTABLE DE PARTE</strong>,
+        cuyo contenido se desarrolla en los siguientes capítulos:
 
     </p>
 
-    <br>
+    <br><br>
 
-    <table>
+    <table style="width:70%;margin:auto;border-collapse:collapse;font-size:13pt;">
 
         <tr>
-            <td style="width:35%"><strong>CAPÍTULO I</strong></td>
+            <td style="padding:8px;"><strong>CAPÍTULO I</strong></td>
             <td>ANTECEDENTES</td>
         </tr>
 
         <tr>
-            <td><strong>CAPÍTULO II</strong></td>
+            <td style="padding:8px;"><strong>CAPÍTULO II</strong></td>
             <td>OBJETO, ALCANCE Y METODOLOGÍA</td>
         </tr>
 
         <tr>
-            <td><strong>CAPÍTULO III</strong></td>
+            <td style="padding:8px;"><strong>CAPÍTULO III</strong></td>
             <td>EXAMEN</td>
         </tr>
 
         <tr>
-            <td><strong>CAPÍTULO IV</strong></td>
+            <td style="padding:8px;"><strong>CAPÍTULO IV</strong></td>
             <td>CONCLUSIONES</td>
         </tr>
 
         <tr>
-            <td><strong>CAPÍTULO V</strong></td>
+            <td style="padding:8px;"><strong>CAPÍTULO V</strong></td>
             <td>FECHA, SELLO Y FIRMA</td>
         </tr>
 
     </table>
 
-    <br><br>
+    <br><br><br>
 
-    <h2 style="text-align:center;font-family:Arial;">
-
+    <h2 style="
+        text-align:center;
+        font-family:Arial;
+        font-size:18pt;
+        margin-bottom:5px;
+    ">
         CAPÍTULO I
-
     </h2>
 
-    <h2 style="text-align:center;font-family:Arial;">
-
+    <h2 style="
+        text-align:center;
+        font-family:Arial;
+        font-size:17pt;
+        font-weight:bold;
+        margin-bottom:35px;
+    ">
         ANTECEDENTES
-
     </h2>
 
-    <br>
+    <h3 style="font-family:Arial;">1.1 DATOS GENERALES</h3>
 
-    <h3>1.1 DATOS GENERALES DEL PROCESO</h3>
+    <p style="
+        text-align:justify;
+        line-height:1.9;
+        font-size:13pt;
+    ">
 
-    <p style="text-align:justify; line-height:1.8;">
-
-        El presente informe pericial contable tiene por finalidad efectuar la
+        El presente Informe Pericial Contable tiene por objeto efectuar la
         determinación técnica del saldo de la obligación derivada del contrato
-        de mutuo celebrado entre el señor <strong>José Carlos Villena
-        Rozas</strong>, en calidad de acreedor, y el señor
-        <strong>Jim Bryam Álvarez Velásquez</strong>, en calidad de deudor,
-        tomando como base la documentación contractual, bancaria y demás medios
-        de prueba puestos a disposición del suscrito.
+        de mutuo celebrado entre el señor
+        <strong>José Carlos Villena Rozas</strong>, en calidad de acreedor,
+        y el señor <strong>Jim Bryam Álvarez Velásquez</strong>, en calidad de
+        deudor, utilizando como sustento la documentación contractual,
+        bancaria y financiera puesta a disposición del suscrito.
 
     </p>
 
-    <h3>1.2 ORIGEN DE LA OBLIGACIÓN FINANCIERA</h3>
+    <h3 style="font-family:Arial;margin-top:25px;">
 
-    <p style="text-align:justify; line-height:1.8;">
+        1.2 ORIGEN DE LA OBLIGACIÓN FINANCIERA
 
-        Conforme a la documentación examinada, con fechas 18 y 19 de septiembre
-        de 2017 el señor José Carlos Villena Rozas otorgó un préstamo por la
-        suma total de <strong>S/ 390,000.00</strong>, mediante dos operaciones
-        bancarias efectuadas en el Banco de Crédito del Perú, obligaciones que
-        posteriormente fueron formalizadas mediante contrato de mutuo con pacto
-        de intereses convencionales.
+    </h3>
+
+    <p style="
+        text-align:justify;
+        line-height:1.9;
+        font-size:13pt;
+    ">
+
+        De la revisión de la documentación examinada se verifica que los días
+        18 y 19 de septiembre de 2017 el señor José Carlos Villena Rozas
+        entregó al señor Jim Bryam Álvarez Velásquez un préstamo por la suma
+        total de <strong>S/390,000.00</strong>, equivalente aproximadamente a
+        <strong>US$120,000.00</strong>, mediante dos operaciones efectuadas en
+        el Banco de Crédito del Perú, las cuales se encuentran plenamente
+        acreditadas con los comprobantes respectivos.
 
     </p>
+
+    <div class="footer">
+
+        CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
+
+    </div>
 
 </div>
 <!-- ========================================================= -->
-<!-- CONTINUACIÓN DEL CAPÍTULO I -->
+<!-- PÁGINA 4 -->
 <!-- ========================================================= -->
 
-<h3>1.3 DOCUMENTACIÓN EXAMINADA</h3>
+<div class="page">
 
-<p style="text-align:justify; line-height:1.8;">
+    <div class="header">
 
-Para la elaboración del presente Informe Pericial Contable se ha tenido a la vista, entre otros, los siguientes documentos:
+        CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+        CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. N.º 55655
+
+    </div>
+
+    <h3 style="font-family:Arial;font-size:15pt;">
+
+        1.3 DOCUMENTACIÓN EXAMINADA
+
+    </h3>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        Para la elaboración del presente Informe Pericial Contable se
+        revisó y evaluó la documentación proporcionada por la parte
+        interesada, verificándose su correspondencia con la obligación
+        objeto del presente examen.
+
+    </p>
+
+    <ul style="line-height:2;font-size:13pt;">
+
+        <li>Contrato de mutuo celebrado entre las partes.</li>
+
+        <li>Constancias de depósitos bancarios efectuados el 18 y 19 de septiembre de 2017.</li>
+
+        <li>Constancia emitida por el Banco de Crédito del Perú.</li>
+
+        <li>Comprobante de amortización de fecha 23 de diciembre de 2017.</li>
+
+        <li>Comprobantes correspondientes a treinta y siete (37) pagos efectuados por el deudor.</li>
+
+        <li>Liquidación financiera objeto del presente examen.</li>
+
+    </ul>
+
+    <br>
+
+    <h3 style="font-family:Arial;font-size:15pt;">
+
+        1.4 HECHOS RELEVANTES
+
+    </h3>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        Del examen de la documentación se determina que el acreedor
+        efectuó la entrega efectiva del dinero mediante operaciones
+        bancarias plenamente identificadas, habiéndose pactado
+        contractualmente una tasa de interés convencional equivalente al
+        <strong>7.5 % por cada período de dos meses</strong>.
+
+    </p>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        Asimismo, se verifica que el deudor realizó una amortización parcial
+        del capital y posteriormente diversos pagos periódicos, los cuales
+        han sido considerados para la reconstrucción financiera de la
+        obligación.
+
+    </p>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        En atención a ello resulta necesario efectuar una determinación
+        técnica del capital pendiente, de los intereses convencionales y
+        del saldo final de la obligación conforme a criterios de
+        verificabilidad financiera y contable.
+
+    </p>
+
+    <br><br>
+
+    <h2 style="
+        text-align:center;
+        font-family:Arial;
+        font-size:18pt;
+        margin-bottom:5px;
+    ">
+
+        CAPÍTULO II
+
+    </h2>
+
+    <h2 style="
+        text-align:center;
+        font-family:Arial;
+        font-size:17pt;
+        font-weight:bold;
+        margin-bottom:35px;
+    ">
+
+        OBJETO, ALCANCE Y METODOLOGÍA
+
+    </h2>
+
+    <h3 style="font-family:Arial;font-size:15pt;">
+
+        2.1 OBJETO DE LA PERICIA
+
+    </h3>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        Determinar técnicamente el saldo de la obligación derivada del
+        contrato de mutuo celebrado entre las partes, verificando el
+        capital efectivamente entregado, la correcta aplicación de los
+        intereses convencionales, la incidencia de los pagos efectuados y
+        el saldo pendiente de la deuda al 30 de mayo de 2026.
+
+    </p>
+
+    <h3 style="font-family:Arial;font-size:15pt;">
+
+        2.2 ALCANCE
+
+    </h3>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        El presente examen comprende la revisión integral de la
+        documentación contractual, bancaria y financiera relacionada con
+        la obligación, así como la evaluación técnica de la liquidación
+        presentada.
+
+    </p>
+
+    <h3 style="font-family:Arial;font-size:15pt;">
+
+        2.3 METODOLOGÍA
+
+    </h3>
+
+    <p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+        El examen se desarrolló aplicando los métodos deductivo,
+        inductivo y analítico, utilizando procedimientos propios de la
+        técnica contable y financiera, verificándose la documentación
+        sustentatoria y efectuándose la reconstrucción matemática de la
+        obligación conforme a las cláusulas contractuales, los principios
+        contables generalmente aceptados y criterios de razonabilidad,
+        verificabilidad y reproducibilidad del cálculo financiero.
+
+    </p>
+
+    <div class="footer">
+
+        CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
+
+    </div>
+
+</div>
+<!-- ========================================================= -->
+<!-- PAGINA 5 -->
+<!-- CAPITULO III -->
+<!-- ========================================================= -->
+
+<div class="page">
+
+<div class="header">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. N.° 55655
+
+</div>
+
+<h2 style="text-align:center;font-family:Arial;font-size:18pt;margin-bottom:5px;">
+CAPÍTULO III
+</h2>
+
+<h2 style="text-align:center;font-family:Arial;font-size:17pt;font-weight:bold;margin-bottom:35px;">
+EXAMEN
+</h2>
+
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+El presente examen pericial tiene por finalidad verificar la consistencia
+contable, financiera y matemática de la obligación derivada del contrato
+de mutuo celebrado entre las partes, determinando el capital
+efectivamente entregado, la correcta aplicación de los intereses
+convencionales, los pagos efectuados por el deudor y el saldo pendiente
+de la obligación al 30 de mayo de 2026.
 
 </p>
 
-<ul style="line-height:1.8; text-align:justify;">
+<h3 style="font-family:Arial;">3.1 DETERMINACIÓN DEL CAPITAL BASE</h3>
 
-<li>Contrato de mutuo suscrito entre las partes.</li>
+<p style="text-align:justify;line-height:1.9;">
 
-<li>Constancias y comprobantes de depósitos bancarios efectuados los días 18 y 19 de septiembre de 2017.</li>
-
-<li>Constancia emitida por el Banco de Crédito del Perú.</li>
-
-<li>Comprobantes correspondientes a la amortización efectuada el 23 de diciembre de 2017.</li>
-
-<li>Comprobantes de los treinta y siete (37) pagos efectuados por el deudor.</li>
-
-<li>Liquidación financiera elaborada para efectos del presente examen.</li>
-
-</ul>
-
-<h3>1.4 HECHOS RELEVANTES</h3>
-
-<p style="text-align:justify; line-height:1.8;">
-
-De la revisión de la documentación examinada se verifica que el acreedor entregó al deudor la suma total de <strong>S/390,000.00</strong>, equivalente aproximadamente a <strong>US$120,000.00</strong>, mediante operaciones bancarias plenamente identificadas.
+De la documentación bancaria revisada se verifica que el acreedor
+efectuó la entrega del préstamo mediante dos depósitos bancarios,
+ascendiendo el capital otorgado a la suma de <strong>US$120,000.00</strong>,
+equivalente aproximadamente a <strong>S/390,000.00</strong>.
 
 </p>
 
-<p style="text-align:justify; line-height:1.8;">
+<table style="width:100%;border-collapse:collapse;font-size:12pt;">
 
-Asimismo, se verifica que las partes pactaron contractualmente una tasa de interés convencional equivalente al <strong>7.5 % por cada período de dos meses</strong>, estableciéndose además una amortización parcial del capital y diversos pagos posteriores efectuados por el deudor.
+<tr style="background:#eeeeee;">
+
+<th style="border:1px solid #000;padding:10px;">Concepto</th>
+
+<th style="border:1px solid #000;padding:10px;">Importe</th>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:8px;">
+Capital originalmente entregado
+</td>
+
+<td style="border:1px solid #000;padding:8px;text-align:right;">
+US$120,000.00
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:8px;">
+Amortización del 23/12/2017
+</td>
+
+<td style="border:1px solid #000;padding:8px;text-align:right;">
+(US$27,692.31)
+</td>
+
+</tr>
+
+<tr style="font-weight:bold;">
+
+<td style="border:1px solid #000;padding:8px;">
+Capital insoluto
+</td>
+
+<td style="border:1px solid #000;padding:8px;text-align:right;">
+US$92,307.69
+</td>
+
+</tr>
+
+</table>
+
+<br><br>
+
+<h3 style="font-family:Arial;">
+
+3.2 DETERMINACIÓN DE LOS INTERESES CONVENCIONALES
+
+</h3>
+
+<p style="text-align:justify;line-height:1.9;">
+
+Conforme al contrato de mutuo, las partes pactaron una tasa de interés
+convencional equivalente al <strong>7.5 % por cada período de dos meses</strong>,
+la cual ha sido aplicada únicamente sobre el capital insoluto, sin
+capitalización de intereses.
 
 </p>
 
-<p style="text-align:justify; line-height:1.8;">
+<table style="width:100%;border-collapse:collapse;font-size:12pt;">
 
-En atención a dicha documentación resulta necesario efectuar una determinación técnica del capital pendiente, los intereses convencionales y el saldo definitivo de la obligación, aplicando criterios financieros verificables y respetando las condiciones pactadas por las partes.
+<tr style="background:#eeeeee;">
+
+<th style="border:1px solid #000;padding:8px;">
+Período
+</th>
+
+<th style="border:1px solid #000;padding:8px;">
+Días
+</th>
+
+<th style="border:1px solid #000;padding:8px;">
+Capital
+</th>
+
+<th style="border:1px solid #000;padding:8px;">
+Interés
+</th>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:8px;">
+19/09/2017 al 23/12/2017
+</td>
+
+<td style="border:1px solid #000;text-align:center;">
+94
+</td>
+
+<td style="border:1px solid #000;text-align:right;">
+US$120,000.00
+</td>
+
+<td style="border:1px solid #000;text-align:right;">
+US$14,100.00
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:8px;">
+23/12/2017 al 30/05/2026
+</td>
+
+<td style="border:1px solid #000;text-align:center;">
+3,070
+</td>
+
+<td style="border:1px solid #000;text-align:right;">
+US$92,307.69
+</td>
+
+<td style="border:1px solid #000;text-align:right;">
+US$354,231.95
+</td>
+
+</tr>
+
+<tr style="font-weight:bold;">
+
+<td colspan="3" style="border:1px solid #000;padding:8px;">
+TOTAL INTERESES
+</td>
+
+<td style="border:1px solid #000;text-align:right;">
+US$368,331.95
+</td>
+
+</tr>
+
+</table>
+
+<div class="footer">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
+
+</div>
+
+</div>
+<!-- ========================================================= -->
+<!-- PAGINA 6 -->
+<!-- CONTINUACIÓN CAPÍTULO III -->
+<!-- ========================================================= -->
+
+<div class="page">
+
+<div class="header">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. N.° 55655
+
+</div>
+
+<h3 style="font-family:Arial;">
+
+3.3 CONVERSIÓN MONETARIA
+
+</h3>
+
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+Para efectos de la presente liquidación se empleó el tipo de cambio de
+<strong>S/ 3.41 por dólar americano</strong>, obteniéndose la conversión del
+monto total de la obligación conforme al siguiente cálculo:
+
+</p>
+
+<br>
+
+<table style="width:100%;border-collapse:collapse;font-size:12pt;">
+
+<tr style="background:#eeeeee;">
+
+<th style="border:1px solid #000;padding:10px;">
+Concepto
+</th>
+
+<th style="border:1px solid #000;padding:10px;">
+Importe
+</th>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:10px;">
+Capital Insoluto
+</td>
+
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+US$92,307.69
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:10px;">
+Intereses
+</td>
+
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+US$368,331.95
+</td>
+
+</tr>
+
+<tr style="font-weight:bold;">
+
+<td style="border:1px solid #000;padding:10px;">
+TOTAL
+</td>
+
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+US$460,639.64
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<p style="text-align:center;font-size:15pt;font-weight:bold;">
+
+US$460,639.64 × S/3.41 = S/1,570,781.17
 
 </p>
 
 <br><br>
 
-<h2 style="text-align:center;font-family:Arial;">
+<h3 style="font-family:Arial;">
 
-CAPÍTULO II
+3.4 DETERMINACIÓN DE LOS PAGOS EFECTUADOS
 
-</h2>
+</h3>
 
-<h2 style="text-align:center;font-family:Arial;">
+<p style="text-align:justify;line-height:1.9;">
 
-OBJETO, ALCANCE Y METODOLOGÍA
-
-</h2>
-
-<br>
-
-<h3>2.1 OBJETO DE LA PERICIA</h3>
-
-<p style="text-align:justify; line-height:1.8;">
-
-El objeto del presente Informe Pericial Contable consiste en determinar técnicamente el saldo de la obligación derivada del contrato de mutuo celebrado entre las partes, verificando la consistencia del capital entregado, la aplicación de los intereses convencionales, los pagos acreditados y el saldo pendiente de pago al 30 de mayo de 2026.
+De la revisión de la documentación sustentatoria se verificó que el
+deudor efectuó treinta y siete (37) pagos de S/4,700.00 cada uno,
+ascendiendo el total abonado a:
 
 </p>
 
-<h3>2.2 ALCANCE</h3>
+<table style="width:100%;border-collapse:collapse;font-size:12pt;">
 
-<p style="text-align:justify; line-height:1.8;">
+<tr style="background:#eeeeee;">
 
-El examen comprende la revisión integral de la documentación contractual, bancaria y financiera proporcionada, así como la evaluación técnica de la liquidación de la deuda, considerando exclusivamente el capital insoluto, los intereses derivados del contrato y los pagos efectivamente acreditados.
+<th style="border:1px solid #000;padding:10px;">
+Concepto
+</th>
 
-</p>
-
-<h3>2.3 METODOLOGÍA</h3>
-
-<p style="text-align:justify; line-height:1.8;">
-
-Para el desarrollo del presente examen se aplicaron los métodos deductivo, inductivo y analítico, utilizando procedimientos propios de la técnica contable y financiera, verificándose la documentación sustentatoria y efectuándose la reconstrucción matemática de la obligación conforme a las cláusulas contractuales, principios contables generalmente aceptados y criterios financieros de verificabilidad, razonabilidad y reproducibilidad.
-
-</p>
-<!-- ========================================================= -->
-<!-- CAPÍTULO III -->
-<!-- ========================================================= -->
-
-<h2 style="text-align:center;font-family:Arial;margin-top:60px;">
-
-CAPÍTULO III
-
-</h2>
-
-<h2 style="text-align:center;font-family:Arial;">
-
-EXAMEN
-
-</h2>
-
-<p style="text-align:justify;line-height:1.8;">
-
-El presente examen pericial tiene por finalidad verificar la consistencia técnica,
-contable y financiera de la obligación derivada del contrato de mutuo, determinando
-el capital efectivamente entregado, la correcta aplicación de la tasa de interés
-convencional pactada, la incidencia de los pagos efectuados por el deudor y el saldo
-real de la obligación al 30 de mayo de 2026.
-
-</p>
-
-<h3>3.1 DETERMINACIÓN DEL CAPITAL BASE</h3>
-
-<p style="text-align:justify;line-height:1.8;">
-
-De la documentación bancaria examinada se verifica que el acreedor efectuó dos
-depósitos a favor del deudor los días 18 y 19 de septiembre de 2017, ascendiendo el
-capital total entregado a la suma de <strong>US$120,000.00</strong>, equivalente a
-<strong>S/390,000.00</strong> aproximadamente.
-
-</p>
-
-<table>
-
-<tr>
-
-<th>Concepto</th>
-
-<th>Importe</th>
+<th style="border:1px solid #000;padding:10px;">
+Importe
+</th>
 
 </tr>
 
 <tr>
 
-<td>Préstamo otorgado</td>
+<td style="border:1px solid #000;padding:10px;">
+37 pagos de S/4,700.00
+</td>
 
-<td style="text-align:right;">US$120,000.00</td>
-
-</tr>
-
-<tr>
-
-<td>Amortización del 23/12/2017</td>
-
-<td style="text-align:right;">(US$27,692.31)</td>
-
-</tr>
-
-<tr>
-
-<td><strong>Capital insoluto</strong></td>
-
-<td style="text-align:right;"><strong>US$92,307.69</strong></td>
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+S/173,900.00
+</td>
 
 </tr>
 
 </table>
 
-<br>
+<br><br>
 
-<h3>3.2 DETERMINACIÓN DE LOS INTERESES CONVENCIONALES</h3>
+<h3 style="font-family:Arial;">
 
-<p style="text-align:justify;line-height:1.8;">
+3.5 DETERMINACIÓN DEL SALDO DE LA OBLIGACIÓN
 
-Conforme al contrato de mutuo, las partes pactaron una tasa de interés convencional
-equivalente al <strong>7.5 % por cada período de dos meses</strong>, calculada
-exclusivamente sobre el capital pendiente de pago y sin capitalización de intereses.
+</h3>
 
-</p>
+<table style="width:100%;border-collapse:collapse;font-size:12pt;">
 
-<table>
+<tr style="background:#eeeeee;">
 
-<tr>
+<th style="border:1px solid #000;padding:10px;">
+Concepto
+</th>
 
-<th>Período</th>
-
-<th>Días</th>
-
-<th>Capital (US$)</th>
-
-<th>Interés</th>
+<th style="border:1px solid #000;padding:10px;">
+Importe
+</th>
 
 </tr>
 
 <tr>
 
-<td>19/09/2017 al 23/12/2017</td>
+<td style="border:1px solid #000;padding:10px;">
+Total de la deuda
+</td>
 
-<td style="text-align:center;">94</td>
-
-<td style="text-align:right;">120,000.00</td>
-
-<td style="text-align:right;">US$14,100.00</td>
-
-</tr>
-
-<tr>
-
-<td>23/12/2017 al 30/05/2026</td>
-
-<td style="text-align:center;">3,070</td>
-
-<td style="text-align:right;">92,307.69</td>
-
-<td style="text-align:right;">US$354,231.95</td>
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+S/1,570,781.17
+</td>
 
 </tr>
 
 <tr>
 
-<td colspan="3"><strong>Total intereses</strong></td>
+<td style="border:1px solid #000;padding:10px;">
+Pagos efectuados
+</td>
 
-<td style="text-align:right;"><strong>US$368,331.95</strong></td>
-
-</tr>
-
-</table>
-
-<br>
-
-<h3>3.3 CONVERSIÓN MONETARIA</h3>
-
-<p style="text-align:justify;line-height:1.8;">
-
-Para efectos de la presente liquidación se utilizó el tipo de cambio de
-<strong>S/3.41 por dólar americano</strong>, obteniéndose el siguiente resultado:
-
-</p>
-
-<p style="text-align:center;font-size:16px;">
-
-<strong>US$460,639.64 × S/3.41 = S/1,570,781.17</strong>
-
-</p>
-
-<h3>3.4 DETERMINACIÓN DE LOS PAGOS EFECTUADOS</h3>
-
-<table>
-
-<tr>
-
-<th>Concepto</th>
-
-<th>Importe</th>
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+(S/173,900.00)
+</td>
 
 </tr>
 
-<tr>
+<tr style="font-weight:bold;background:#f7f7f7;">
 
-<td>Treinta y siete (37) pagos de S/4,700.00</td>
+<td style="border:1px solid #000;padding:10px;">
+SALDO PENDIENTE
+</td>
 
-<td style="text-align:right;">S/173,900.00</td>
+<td style="border:1px solid #000;text-align:right;padding:10px;">
+S/1,396,881.17
+</td>
 
 </tr>
 
 </table>
 
-<br>
+<br><br>
 
-<h3>3.5 DETERMINACIÓN DEL SALDO DE LA OBLIGACIÓN</h3>
+<h3 style="font-family:Arial;">
 
-<table>
+3.6 OBSERVACIÓN TÉCNICA
 
-<tr>
+</h3>
 
-<th>Concepto</th>
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
 
-<th>Importe</th>
-
-</tr>
-
-<tr>
-
-<td>Total de la deuda</td>
-
-<td style="text-align:right;">S/1,570,781.17</td>
-
-</tr>
-
-<tr>
-
-<td>Pagos acreditados</td>
-
-<td style="text-align:right;">(S/173,900.00)</td>
-
-</tr>
-
-<tr>
-
-<td><strong>Saldo pendiente</strong></td>
-
-<td style="text-align:right;"><strong>S/1,396,881.17</strong></td>
-
-</tr>
-
-</table>
-
-<br>
-
-<h3>3.6 OBSERVACIÓN TÉCNICA</h3>
-
-<p style="text-align:justify;line-height:1.8;">
-
-La presente liquidación comprende exclusivamente el capital insoluto y los intereses
-derivados del contrato de mutuo. No se incluyen gastos notariales, costos
-procesales, honorarios profesionales u otros conceptos accesorios, por no formar
-parte del objeto del presente examen pericial.
+La presente liquidación comprende exclusivamente el capital insoluto y
+los intereses convencionales derivados del contrato de mutuo, sin
+incorporar gastos notariales, honorarios profesionales, costos
+procesales u otros conceptos accesorios, los cuales no forman parte del
+objeto del presente examen pericial.
 
 </p>
+
+<div class="footer">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
+
+</div>
+
+</div>
 <!-- ========================================================= -->
-<!-- CAPÍTULO IV -->
+<!-- PAGINA 7 -->
+<!-- CAPÍTULO IV - CONCLUSIONES -->
 <!-- ========================================================= -->
 
-<h2 style="text-align:center;font-family:Arial;margin-top:60px;">
+<div class="page">
+
+<div class="header">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. N.° 55655
+
+</div>
+
+<h2 style="text-align:center;font-family:Arial;font-size:18pt;margin-bottom:5px;">
 
 CAPÍTULO IV
 
 </h2>
 
-<h2 style="text-align:center;font-family:Arial;">
+<h2 style="text-align:center;font-family:Arial;font-size:17pt;font-weight:bold;margin-bottom:40px;">
 
 CONCLUSIONES
 
 </h2>
 
-<p style="text-align:justify;line-height:1.8;">
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
 
-El profesional contable que suscribe el presente Informe Pericial Contable, luego del examen efectuado a la documentación contractual, bancaria y financiera, formula las siguientes conclusiones:
-
-</p>
-
-<p style="text-align:justify;line-height:1.8;">
-
-<strong>PRIMERA.-</strong> De la documentación examinada se verifica que el señor José Carlos Villena Rozas otorgó al señor Jim Bryam Álvarez Velásquez un préstamo por la suma equivalente a <strong>US$120,000.00</strong>, mediante dos operaciones bancarias realizadas los días 18 y 19 de septiembre de 2017, las cuales se encuentran debidamente acreditadas.
+El profesional contable que suscribe el presente Informe Pericial Contable,
+luego del examen efectuado a la documentación contractual, bancaria y
+financiera relacionada con la obligación materia de análisis, formula las
+siguientes conclusiones:
 
 </p>
 
-<p style="text-align:justify;line-height:1.8;">
+<br>
 
-<strong>SEGUNDA.-</strong> Se verifica que el deudor efectuó una amortización parcial del capital el 23 de diciembre de 2017, así como treinta y siete (37) pagos posteriores, los cuales han sido considerados para la determinación del saldo de la obligación.
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
 
-</p>
-
-<p style="text-align:justify;line-height:1.8;">
-
-<strong>TERCERA.-</strong> El cálculo de los intereses ha sido efectuado aplicando la tasa convencional pactada por las partes, equivalente al <strong>7.5 % por cada período de dos meses</strong>, calculándose únicamente sobre el capital insoluto y sin efectuar capitalización de intereses, conforme a las condiciones del contrato.
-
-</p>
-
-<p style="text-align:justify;line-height:1.8;">
-
-<strong>CUARTA.-</strong> Efectuada la determinación técnica del capital, los intereses convencionales y los pagos acreditados, se establece que el saldo pendiente de la obligación al <strong>30 de mayo de 2026</strong> asciende a la suma de <strong>S/1,396,881.17</strong>, monto que refleja el estado financiero de la deuda conforme a la documentación examinada.
+<strong>PRIMERA.-</strong> De la documentación bancaria examinada se verifica
+que el señor <strong>José Carlos Villena Rozas</strong> otorgó al señor
+<strong>Jim Bryam Álvarez Velásquez</strong> un préstamo equivalente a
+<strong>US$120,000.00</strong>, mediante operaciones efectuadas los días
+18 y 19 de septiembre de 2017, las cuales se encuentran debidamente
+acreditadas.
 
 </p>
 
-<p style="text-align:justify;line-height:1.8;">
+<br>
 
-<strong>QUINTA.-</strong> La presente liquidación comprende únicamente el capital pendiente de pago y los intereses derivados del contrato de mutuo, no incorporándose gastos notariales, honorarios profesionales, costos procesales u otros conceptos accesorios, por no formar parte del objeto del presente informe pericial.
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+<strong>SEGUNDA.-</strong> Se verificó que el deudor efectuó una amortización
+parcial del capital el 23 de diciembre de 2017, así como treinta y siete
+(37) pagos posteriores, los cuales fueron considerados para la
+determinación técnica del saldo de la obligación.
 
 </p>
 
-<br><br><br>
+<br>
 
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+<strong>TERCERA.-</strong> Los intereses convencionales fueron calculados
+aplicando la tasa pactada por las partes equivalente al
+<strong>7.5 % por cada período de dos meses</strong>, sin efectuar
+capitalización de intereses, respetándose las condiciones establecidas
+en el contrato de mutuo.
+
+</p>
+
+<br>
+
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+<strong>CUARTA.-</strong> Como resultado del examen técnico realizado se
+determinó que el monto total de la obligación asciende a
+<strong>S/1,570,781.17</strong>, importe del cual corresponde deducir los
+pagos acreditados por la suma de <strong>S/173,900.00</strong>.
+
+</p>
+
+<br>
+
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+<strong>QUINTA.-</strong> En consecuencia, el saldo pendiente de la
+obligación al <strong>30 de mayo de 2026</strong> asciende a la suma de
+<strong>S/1,396,881.17</strong>, monto que comprende exclusivamente el
+capital insoluto y los intereses convencionales derivados del contrato,
+sin considerar gastos accesorios ajenos al objeto del presente informe.
+
+</p>
+
+<br>
+
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
+
+<strong>SEXTA.-</strong> Las conclusiones contenidas en el presente Informe
+Pericial Contable se sustentan en la documentación examinada, la
+reconstrucción financiera efectuada y la aplicación de criterios
+contables y financieros técnicamente verificables, permitiendo establecer
+el estado actual de la obligación materia del presente examen.
+
+</p>
+
+<div class="footer">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO · PERITO CONTABLE
+
+</div>
+
+</div>
 <!-- ========================================================= -->
+<!-- PAGINA 8 -->
 <!-- CAPÍTULO V -->
 <!-- ========================================================= -->
 
-<h2 style="text-align:center;font-family:Arial;">
+<div class="page">
+
+<div class="header">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON<br>
+CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. N.° 55655
+
+</div>
+
+<h2 style="text-align:center;font-family:Arial;font-size:18pt;margin-bottom:5px;">
 
 CAPÍTULO V
 
 </h2>
 
-<h2 style="text-align:center;font-family:Arial;">
+<h2 style="text-align:center;font-family:Arial;font-size:17pt;font-weight:bold;margin-bottom:40px;">
 
 FECHA, SELLO Y FIRMA
 
 </h2>
 
-<br><br><br><br>
+<p style="text-align:justify;line-height:1.9;font-size:13pt;">
 
-<div style="text-align:center;line-height:2;">
+Por lo expuesto, el profesional contable que suscribe emite el presente
+<strong>INFORME PERICIAL CONTABLE DE PARTE</strong>, dejando constancia
+que las conclusiones contenidas en el mismo han sido elaboradas sobre la
+base de la documentación examinada, la aplicación de procedimientos
+técnicos de naturaleza contable y financiera, y el análisis efectuado con
+independencia de criterio, objetividad y observancia de las normas
+profesionales aplicables.
 
-_________________________________________<br>
+</p>
+
+<br><br><br><br><br>
+
+<div style="text-align:center;line-height:2.2;">
+
+_____________________________________________<br>
 
 <strong>C.P.C. JESÚS ÁNGEL CÁRDENAS SIMON</strong><br>
 
 Contador Público Colegiado<br>
 
-Perito Contable<br>
+Perito Contable de Parte<br>
 
 Matrícula N.° 55655
 
 <br><br>
 
-Cusco, ____ de __________________ de 2026
+Cusco, ______ de __________________ de 2026
 
 </div>
 
-<div style="page-break-before:always;"></div>
+<br><br><br><br>
 
-<!-- ========================================================= -->
-<!-- ANEXOS -->
-<!-- ========================================================= -->
-
-<h2 style="text-align:center;font-family:Arial;">
+<h2 style="text-align:center;font-family:Arial;font-size:16pt;">
 
 ANEXOS
 
 </h2>
 
-<p style="text-align:justify;line-height:1.8;">
+<table style="width:100%;border-collapse:collapse;font-size:12pt;margin-top:20px;">
 
-Se adjuntan como anexos del presente Informe Pericial Contable los documentos que sustentan las conclusiones desarrolladas en el examen pericial:
+<tr style="background:#eeeeee;">
 
-</p>
+<th style="border:1px solid #000;padding:10px;width:12%;">
 
-<ol style="line-height:2;">
+N.°
 
-<li>Contrato de mutuo.</li>
+</th>
 
-<li>Constancias de depósitos bancarios.</li>
+<th style="border:1px solid #000;padding:10px;">
 
-<li>Constancia emitida por el Banco de Crédito del Perú.</li>
+DOCUMENTO
 
-<li>Comprobante de amortización de fecha 23 de diciembre de 2017.</li>
+</th>
 
-<li>Relación y comprobantes de los treinta y siete (37) pagos efectuados.</li>
+</tr>
 
-<li>Matriz de liquidación financiera.</li>
+<tr>
 
-<li>Documentación complementaria utilizada en el examen.</li>
+<td style="border:1px solid #000;padding:10px;text-align:center;">
+1
+</td>
 
-</ol>
+<td style="border:1px solid #000;padding:10px;">
+Contrato de Mutuo.
+</td>
 
-<br><br>
+</tr>
 
-<div style="text-align:center;font-style:italic;">
+<tr>
 
-*** FIN DEL INFORME PERICIAL CONTABLE ***
+<td style="border:1px solid #000;padding:10px;text-align:center;">
+2
+</td>
+
+<td style="border:1px solid #000;padding:10px;">
+Constancias de depósitos bancarios.
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:10px;text-align:center;">
+3
+</td>
+
+<td style="border:1px solid #000;padding:10px;">
+Constancia emitida por el Banco de Crédito del Perú.
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:10px;text-align:center;">
+4
+</td>
+
+<td style="border:1px solid #000;padding:10px;">
+Comprobante de amortización de fecha 23 de diciembre de 2017.
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:10px;text-align:center;">
+5
+</td>
+
+<td style="border:1px solid #000;padding:10px;">
+Comprobantes de los treinta y siete (37) pagos efectuados.
+</td>
+
+</tr>
+
+<tr>
+
+<td style="border:1px solid #000;padding:10px;text-align:center;">
+6
+</td>
+
+<td style="border:1px solid #000;padding:10px;">
+Liquidación financiera de la deuda.
+</td>
+
+</tr>
+
+</table>
+
+<div class="footer">
+
+CPC JESÚS ÁNGEL CÁRDENAS SIMON · CONTADOR PÚBLICO COLEGIADO · PERITO CONTABLE · MAT. 55655
+
+</div>
 
 </div>
